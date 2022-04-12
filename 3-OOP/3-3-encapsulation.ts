@@ -47,4 +47,6 @@
     const maker1 = CoffeeMaker.makerMachine(20);
     maker1.fillCoffeBeans(50);
   }
+
+  // get, set -> 다양한 연산, 유효성 검사
 }
