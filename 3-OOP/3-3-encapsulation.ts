@@ -7,16 +7,27 @@
       hasMilk: boolean;
     };
 
-    class CoffeeMaker {
-      static BEANS_GRAMM_PER_SHOT: number = 7;
-      coffeeBeans: number = 0;
+    // private
+    // protected 상속
+    // public
 
-      constructor(beans: number) {
+    class CoffeeMaker {
+      private static BEANS_GRAMM_PER_SHOT: number = 7;
+      private coffeeBeans: number = 0;
+
+      private constructor(beans: number) {
         this.coffeeBeans = beans;
       }
 
       static makerMachine(coffeBeans: number): CoffeeMaker {
         return new CoffeeMaker(coffeBeans);
+      }
+
+      fillCoffeBeans(beans) {
+        if (beans < 1) {
+          throw new Error('콩은 0개가 될수 없어!');
+        }
+        this.coffeeBeans += beans;
       }
 
       makeCoffee(shots: number): CoffeCup {
@@ -33,7 +44,7 @@
       }
     }
 
-    const maker1 = new CoffeeMaker(20);
-    const maker2 = CoffeeMaker.makerMachine(30);
+    const maker1 = CoffeeMaker.makerMachine(20);
+    maker1.fillCoffeBeans(50);
   }
 }
